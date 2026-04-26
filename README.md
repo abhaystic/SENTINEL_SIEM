@@ -1,11 +1,11 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1a1a2e,100:0f3460&height=200&section=header&text=SENTINEL SIEM&fontSize=64&fontColor=00d4ff&animation=fadeIn&fontAlignY=38&desc=Enterprise Security Information & Event Management&descAlignY=58&descSize=18&descColor=94a3b8" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1a1a2e,100:0f3460&height=200&section=header&text=SENTINEL%20SIEM&fontSize=64&fontColor=00d4ff&animation=fadeIn&fontAlignY=38&desc=Enterprise%20Security%20Information%20%26%20Event%20Management&descAlignY=58&descSize=18&descColor=94a3b8" width="100%"/>
 
 <p>
   <img src="https://img.shields.io/badge/Python-3.10+-3776ab?style=for-the-badge&logo=python&logoColor=white"/>
   <img src="https://img.shields.io/badge/Flask-2.3+-000000?style=for-the-badge&logo=flask&logoColor=white"/>
-  <img src="https://img.shields.io/badge/scikit--learn-ML Engine-f7931e?style=for-the-badge&logo=scikitlearn&logoColor=white"/>
+  <img src="https://img.shields.io/badge/scikit--learn-ML%20Engine-f7931e?style=for-the-badge&logo=scikitlearn&logoColor=white"/>
   <img src="https://img.shields.io/badge/SQLite-Database-003b57?style=for-the-badge&logo=sqlite&logoColor=white"/>
 </p>
 
@@ -21,10 +21,9 @@
 > **Experience the future of security monitoring with our intuitive, real-time SOC dashboard.**
 
 <div style="display: flex; justify-content: center; gap: 10px; margin: 15px 0;">
-  <img src="./images/screenshot1.png" alt="SENTINEL SIEM Dashboard Screenshot 1" style="width: 30%; border-radius: 8px; margin: 5px;"/>
-  <img src="./images/screenshot2.png" alt="SENTINEL SIEM Dashboard Screenshot 2" style="width: 30%; border-radius: 8px; margin: 5px;"/>
-  <img src="https://mistralaiblackforestprod.blob.core.windows.net/images/blackforest/3c60/3dab/-c05/6-49aa-a70c-9e14b4cc8518/image.jpg?se=2026-04-26T16%3A13%3A03Z&sp=r&sv=2026-02-06&sr=b&skoid=0c825961-8b13-4c3f-94c2-848b13b71a98&sktid=4fbc1168-2984-4d17-af19-ac5138c2378e&skt=2026-04-26T15%3A13%3A03Z&ske=2026-04-26T16%3A13%3A03Z&sks=b&skv=2026-02-06&sig=%2BJ7OZJvP46bZeWl6bp%2BZhsi%2B%2BVXQTcQKp54t7Av7BFs%3D"
-       alt="SENTINEL SIEM Dashboard Preview" style="width: 30%; border-radius: 8px; margin: 5px;"/>
+  <img src="images/screenshot1.png" alt="SENTINEL SIEM Dashboard Screenshot 1" style="width: 30%; border-radius: 8px; margin: 5px;"/>
+  <img src="images/screenshot2.png" alt="SENTINEL SIEM Dashboard Screenshot 2" style="width: 30%; border-radius: 8px; margin: 5px;"/>
+  <img src="https://mistralaiblackforestprod.blob.core.windows.net/images/blackforest/3c60/3dab/-c05/6-49aa-a70c-9e14b4cc8518/image.jpg?se=2026-04-26T16%3A13%3A03Z&sp=r&sv=2026-02-06&sr=b&skoid=0c825961-8b13-4c3f-94c2-848b13b71a98&sktid=4fbc1168-2984-4d17-af19-ac5138c2378e&skt=2026-04-26T15%3A13%3A03Z&ske=2026-04-26T16%3A13%3A03Z&sks=b&skv=2026-02-06&sig=%2BJ7OZJvP46bZeWl6bp%2BZhsi%2B%2BVXQTcQKp54t7Av7BFs%3D" alt="SENTINEL SIEM Dashboard Preview" style="width: 30%; border-radius: 8px; margin: 5px;"/>
 </div>
 
 > **A full-stack Enterprise SIEM system with real-time threat detection, AI-powered anomaly analysis, an automated firewall, and a cinematic SOC dashboard — engineered for defensive security research.**
@@ -316,9 +315,9 @@ SENTINEL_SIEM/
 │
 ├── exports/                        # CSV/JSON reports (auto-generated)
 │
-└── userguide & research/           # User guides and research documents
+└── userguide_and_research/         # User guides and research documents
     ├── userguide.pdf               # User guide for SENTINEL SIEM
-    └── research_paper.pdf           # Research paper for SENTINEL SIEM
+    └── research_paper.pdf          # Research paper for SENTINEL SIEM
 ```
 
 ---
@@ -400,7 +399,7 @@ When 5+ CRITICAL threats are detected, SENTINEL enters full lockdown:
 ### Contact & Detailed Reading
 📧 **Email:** abhaytaknet@gmail.com
 🔗 **LinkedIn:** [www.linkedin.com/in/abhay-singh-551aa6325](www.linkedin.com/in/abhay-singh-551aa6325)
-📄 **Research Paper:** [SENTINEL SIEM Research Paper](./userguide%20&%20research/research_paper.pdf)
-📖 **User Guide:** [SENTINEL SIEM User Guide](./userguide%20&%20research/userguide.pdf)
+📄 **Research Paper:** [SENTINEL SIEM Research Paper](userguide_and_research/research_paper.pdf)
+📖 **User Guide:** [SENTINEL SIEM User Guide](userguide_and_research/userguide.pdf)
 
 </div>
