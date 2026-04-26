@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1a1a2e,100:0f3460&height=200&section=header&text=SENTINEL%20SIEM&fontSize=64&fontColor=00d4ff&animation=fadeIn&fontAlignY=38&desc=Enterprise%20Security%20Information%20%26%20Event%20Management&descAlignY=58&descSize=18&descColor=94a3b8" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1a1a2e,100:0f3460&height=200&section=header&text=SENTINEL%20SIEM&fontSize=64&fontColor=00d4ff&animation=fadeIn&fontAlignY=38&desc=Enterprise%20Security%20Information%20and%20Event%20Management&descAlignY=58&descSize=18&descColor=94a3b8" width="100%"/>
 
 <p>
   <img src="https://img.shields.io/badge/Python-3.10+-3776ab?style=for-the-badge&logo=python&logoColor=white"/>
@@ -377,7 +377,7 @@ MIT License — see LICENSE for details.
 
 <br/>
 
-**Abhay Singh Taknet**
+**Engineered by Abhay Singh Taknet**
 
 B.Tech Computer Science and Engineering
 Sobhasaria Group of Institutions, Sikar — Bikaner Technical University
@@ -385,12 +385,12 @@ Roll No. 22ESGCS006 | Session 2025–2026
 
 <br/>
 
-<a href="https://www.linkedin.com/in/abhay-singh-taknet">
+<a href="https://www.linkedin.com/in/abhay-singh-551aa6325">
   <img src="https://img.shields.io/badge/LinkedIn-Abhay%20Singh%20Taknet-0077b5?style=for-the-badge&logo=linkedin&logoColor=white"/>
 </a>
 &nbsp;
-<a href="mailto:abhaysinghtaknet@gmail.com">
-  <img src="https://img.shields.io/badge/Email-abhaysinghtaknet@gmail.com-ea4335?style=for-the-badge&logo=gmail&logoColor=white"/>
+<a href="mailto:abhaytaknet@gmail.com">
+  <img src="https://img.shields.io/badge/Email-abhaytaknet@gmail.com-ea4335?style=for-the-badge&logo=gmail&logoColor=white"/>
 </a>
 &nbsp;
 <a href="https://github.com/abhaystic/SENTINEL_SIEM">
