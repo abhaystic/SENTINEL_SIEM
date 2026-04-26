@@ -379,10 +379,6 @@ MIT License — see LICENSE for details.
 
 **Engineered by Abhay Singh Taknet**
 
-B.Tech Computer Science and Engineering
-Sobhasaria Group of Institutions, Sikar — Bikaner Technical University
-Roll No. 22ESGCS006 | Session 2025–2026
-
 <br/>
 
 <a href="https://www.linkedin.com/in/abhay-singh-551aa6325">
