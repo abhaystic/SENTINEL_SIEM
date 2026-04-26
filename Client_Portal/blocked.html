@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ACCESS DENIED</title>
+    <style>
+        body { background: #1a0000; color: #ff3333; font-family: monospace; display: flex; justify-content: center; align-items: center; height: 100vh; text-align: center; }
+        .alert-box { border: 2px solid red; padding: 40px; background: #0a0000; box-shadow: 0 0 30px rgba(255,0,0,0.3); }
+        h1 { font-size: 40px; margin: 0; }
+    </style>
+</head>
+<body>
+    <div class="alert-box">
+        <h1> CONNECTION TERMINATED</h1>
+        <h2>NEXUS ACTIVE DEFENSE TRIGGERED</h2>
+        <p>Malicious payload detected in your request.</p>
+        <p>Your IP <b>({{ ip }})</b> has been flagged and permanently blacklisted.</p>
+        <p style="color:#666; font-size: 12px; margin-top: 30px;">Incident Reported to Aegis Corp SOC Team.</p>
+    </div>
+</body>
+</html>

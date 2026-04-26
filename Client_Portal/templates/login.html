@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ORION | Luxury Timepieces</title>
+  <meta name="description" content="Discover the art of precision. Handcrafted luxury watches for the discerning collector.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+          },
+          colors: {
+            background: '#0a0a0a',
+            foreground: '#f5f5f5',
+            card: '#141414',
+            'card-foreground': '#f5f5f5',
+            primary: '#4a90d9',
+            'primary-foreground': '#ffffff',
+            secondary: '#1e2433',
+            'secondary-foreground': '#e5e5e5',
+            muted: '#1a1a1f',
+            'muted-foreground': '#a0a0a0',
+            border: '#262630',
+            input: '#161618',
+            ring: '#4a90d9',
+            destructive: '#dc2626',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #0a0a0a; color: #f5f5f5; }
+    
+    .glass-effect {
+      backdrop-filter: blur(20px);
+      background: rgba(10, 10, 10, 0.8);
+      border-bottom: 1px solid rgba(38, 38, 48, 0.5);
+    }
+    
+    .luxury-shadow {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(32, 32, 32, 1);
+    }
+    
+    @keyframes ping {
+      75%, 100% { transform: scale(2); opacity: 0; }
+    }
+    
+    @keyframes pulse {
+      50% { opacity: .5; }
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes slideProgress {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+    
+    .animate-ping { animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }
+    .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    .animate-spin { animation: spin 1s linear infinite; }
+    .slide-progress { animation: slideProgress 6s linear; }
+    
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="font-sans antialiased min-h-screen">
+  <header class="fixed top-0 left-0 right-0 z-50 glass-effect">
+    <div class="mx-auto max-w-7xl px-6 py-4">
+      <nav class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="h-8 w-8 rounded-full border border-primary/50 flex items-center justify-center">
+            <span class="text-primary text-xs font-bold tracking-widest">O</span>
+          </div>
+          <span class="text-xl font-light tracking-[0.3em] text-foreground">ORION</span>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-10">
+          <a href="#" class="text-sm font-light tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-300 uppercase">Collections</a>
+          <a href="#" class="text-sm font-light tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-300 uppercase">Timepieces</a>
+          <a href="#" class="text-sm font-light tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-300 uppercase">Heritage</a>
+          <a href="#" class="text-sm font-light tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-300 uppercase">Craftsmanship</a>
+          <a href="#" class="text-sm font-light tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-300 uppercase">Boutiques</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button class="p-2 text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </button>
+          <button onclick="openAdminPortal()" class="p-2 text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          </button>
+          <button class="p-2 text-muted-foreground hover:text-foreground transition-colors duration-300 relative">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span class="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-primary text-[10px] text-white flex items-center justify-center">2</span>
+          </button>
+          <button onclick="toggleMobileMenu()" class="p-2 text-muted-foreground hover:text-foreground transition-colors duration-300 lg:hidden">
+            <svg id="menuIcon" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg id="closeIcon" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </nav>
+
+      <div id="mobileMenu" class="lg:hidden overflow-hidden transition-all duration-500 ease-in-out max-h-0 opacity-0">
+        <div class="flex flex-col gap-4 py-4 border-t border-border mt-6">
+          <a href="#" class="text-sm font-light tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-300 uppercase">Collections</a>
+          <a href="#" class="text-sm font-light tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-300 uppercase">Timepieces</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="relative h-screen w-full overflow-hidden bg-background">
+    <div id="slidesContainer" class="absolute inset-0">
+      <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-100" data-index="0">
+        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=2080&auto=format&fit=crop" alt="Submersible Watch" class="absolute inset-0 w-full h-full object-cover object-center scale-105">
+        <div class="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50"></div>
+      </div>
+      <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0" data-index="1">
+        <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?q=80&w=2080&auto=format&fit=crop" alt="Chronograph Watch" class="absolute inset-0 w-full h-full object-cover object-center scale-105">
+        <div class="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50"></div>
+      </div>
+      <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0" data-index="2">
+        <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=2080&auto=format&fit=crop" alt="Classique Watch" class="absolute inset-0 w-full h-full object-cover object-center scale-105">
+        <div class="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50"></div>
+      </div>
+    </div>
+
+    <div class="relative h-full flex items-center">
+      <div class="mx-auto max-w-7xl px-6 w-full">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-8">
+            <div id="slideCollection" class="transition-all duration-700">
+              <span class="text-primary text-sm font-medium tracking-[0.3em] uppercase">SUBMERSIBLE</span>
+            </div>
+            
+            <h1 id="slideTitle" class="font-serif text-5xl md:text-7xl lg:text-8xl font-light leading-none text-foreground transition-all duration-700">
+              Depths of Excellence
+            </h1>
+            
+            <p id="slideSubtitle" class="text-lg md:text-xl text-muted-foreground font-light max-w-md transition-all duration-700">
+              Engineered for the abyss. Crafted for the wrist.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-6 transition-all duration-700">
+              <span id="slidePrice" class="text-3xl font-light text-foreground">$14,500</span>
+              <button class="group relative px-8 py-4 bg-primary text-white text-sm font-medium tracking-wider uppercase overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/25">
+                <span class="relative z-10">Add to Bag</span>
+              </button>
+              <button class="px-8 py-4 border border-border text-foreground text-sm font-medium tracking-wider uppercase hover:bg-secondary/50 transition-all duration-300">
+                Technical Details
+              </button>
+            </div>
+          </div>
+
+          <div class="hidden lg:flex justify-center items-center">
+            <button class="group relative w-32 h-32 rounded-full border border-border/50 flex items-center justify-center hover:border-primary/50 transition-all duration-500">
+              <div class="absolute inset-2 rounded-full bg-secondary/20 group-hover:bg-primary/10 transition-colors duration-500"></div>
+              <svg class="h-10 w-10 text-foreground group-hover:text-primary transition-colors duration-300 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <div class="absolute inset-0 rounded-full border border-primary/30 animate-ping opacity-0 group-hover:opacity-100"></div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-12 left-0 right-0">
+      <div class="mx-auto max-w-7xl px-6 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button onclick="goToSlide(0)" class="slide-indicator relative h-1 w-12 bg-primary transition-all duration-500" data-index="0">
+            <div class="slide-progress-bar absolute inset-0 bg-foreground origin-left"></div>
+          </button>
+          <button onclick="goToSlide(1)" class="slide-indicator relative h-1 w-6 bg-muted hover:bg-muted-foreground transition-all duration-500" data-index="1"></button>
+          <button onclick="goToSlide(2)" class="slide-indicator relative h-1 w-6 bg-muted hover:bg-muted-foreground transition-all duration-500" data-index="2"></button>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button onclick="toggleAutoplay()" id="playPauseBtn" class="p-3 border border-border rounded-full hover:border-muted-foreground transition-colors duration-300">
+            <svg id="pauseIcon" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
+            <svg id="playIcon" class="h-4 w-4 hidden ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <button onclick="prevSlide()" class="p-3 border border-border rounded-full hover:border-muted-foreground transition-colors duration-300">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button onclick="nextSlide()" class="p-3 border border-border rounded-full hover:border-muted-foreground transition-colors duration-300">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-32 bg-background relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+
+    <div class="mx-auto max-w-7xl px-6 relative">
+      <div class="text-center mb-20">
+        <span class="text-primary text-sm font-medium tracking-[0.3em] uppercase">Featured Collection</span>
+        <h2 class="mt-4 font-serif text-4xl md:text-5xl lg:text-6xl font-light text-foreground">
+          Exceptional Timepieces
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="group relative">
+          <div class="relative bg-card border border-border overflow-hidden transition-all duration-500 hover:border-primary/30 luxury-shadow">
+            <div class="relative aspect-square overflow-hidden bg-secondary/20">
+              <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=500&auto=format&fit=crop" alt="Submersible Luna Rossa" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
+              <div class="absolute inset-0 bg-background/60 transition-opacity duration-500 opacity-0 group-hover:opacity-100"></div>
+              
+              <div class="absolute top-4 right-4 flex flex-col gap-2 transition-all duration-500 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0">
+                <button onclick="toggleSpecs(this)" class="p-3 bg-background/80 backdrop-blur-sm border border-border hover:border-primary transition-colors duration-300">
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                </button>
+              </div>
+
+              <div class="specs-panel absolute inset-x-0 bottom-0 bg-background/95 backdrop-blur-md p-6 transition-all duration-500 translate-y-full opacity-0">
+                <h4 class="text-sm font-medium tracking-wider uppercase text-primary mb-4">Technical Specifications</h4>
+                <div class="space-y-3 text-sm">
+                  <div class="flex justify-between"><span class="text-muted-foreground">Case</span><span class="text-foreground">47mm Carbotech</span></div>
+                  <div class="flex justify-between"><span class="text-muted-foreground">Movement</span><span class="text-foreground">Automatic P.9010</span></div>
+                  <div class="flex justify-between"><span class="text-muted-foreground">Water Resistance</span><span class="text-foreground">300m</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div>
+                <span class="text-xs text-primary tracking-[0.2em] uppercase">SUBMERSIBLE</span>
+                <h3 class="mt-2 text-xl font-light text-foreground group-hover:text-primary transition-colors duration-300">Submersible Luna Rossa</h3>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-light text-foreground">$14,500</span>
+                <button class="group/btn flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm font-medium tracking-wider uppercase transition-all duration-300 hover:gap-4">
+                  <span>Add</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="group relative">
+          <div class="relative bg-card border border-border overflow-hidden transition-all duration-500 hover:border-primary/30 luxury-shadow">
+            <div class="relative aspect-square overflow-hidden bg-secondary/20">
+              <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?q=80&w=500&auto=format&fit=crop" alt="Luminor Chrono" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
+              <div class="absolute inset-0 bg-background/60 transition-opacity duration-500 opacity-0 group-hover:opacity-100"></div>
+              
+              <div class="absolute top-4 right-4 flex flex-col gap-2 transition-all duration-500 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0">
+                <button onclick="toggleSpecs(this)" class="p-3 bg-background/80 backdrop-blur-sm border border-border hover:border-primary transition-colors duration-300">
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                </button>
+              </div>
+
+              <div class="specs-panel absolute inset-x-0 bottom-0 bg-background/95 backdrop-blur-md p-6 transition-all duration-500 translate-y-full opacity-0">
+                <h4 class="text-sm font-medium tracking-wider uppercase text-primary mb-4">Technical Specifications</h4>
+                <div class="space-y-3 text-sm">
+                  <div class="flex justify-between"><span class="text-muted-foreground">Case</span><span class="text-foreground">44mm Titanium</span></div>
+                  <div class="flex justify-between"><span class="text-muted-foreground">Movement</span><span class="text-foreground">Automatic P.9200</span></div>
+                  <div class="flex justify-between"><span class="text-muted-foreground">Water Resistance</span><span class="text-foreground">100m</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div>
+                <span class="text-xs text-primary tracking-[0.2em] uppercase">CHRONOGRAPH</span>
+                <h3 class="mt-2 text-xl font-light text-foreground group-hover:text-primary transition-colors duration-300">Luminor Chrono</h3>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-light text-foreground">$18,900</span>
+                <button class="group/btn flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm font-medium tracking-wider uppercase transition-all duration-300 hover:gap-4">
+                  <span>Add</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="group relative">
+          <div class="relative bg-card border border-border overflow-hidden transition-all duration-500 hover:border-primary/30 luxury-shadow">
+            <div class="relative aspect-square overflow-hidden bg-secondary/20">
+              <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=500&auto=format&fit=crop" alt="Radiomir Oro" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
+              <div class="absolute inset-0 bg-background/60 transition-opacity duration-500 opacity-0 group-hover:opacity-100"></div>
+              
+              <div class="absolute top-4 right-4 flex flex-col gap-2 transition-all duration-500 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0">
+                <button onclick="toggleSpecs(this)" class="p-3 bg-background/80 backdrop-blur-sm border border-border hover:border-primary transition-colors duration-300">
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                </button>
+              </div>
+
+              <div class="specs-panel absolute inset-x-0 bottom-0 bg-background/95 backdrop-blur-md p-6 transition-all duration-500 translate-y-full opacity-0">
+                <h4 class="text-sm font-medium tracking-wider uppercase text-primary mb-4">Technical Specifications</h4>
+                <div class="space-y-3 text-sm">
+                  <div class="flex justify-between"><span class="text-muted-foreground">Case</span><span class="text-foreground">42mm 18K Rose Gold</span></div>
+                  <div class="flex justify-between"><span class="text-muted-foreground">Movement</span><span class="text-foreground">Manual P.999</span></div>
+                  <div class="flex justify-between"><span class="text-muted-foreground">Water Resistance</span><span class="text-foreground">30m</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div>
+                <span class="text-xs text-primary tracking-[0.2em] uppercase">CLASSIQUE</span>
+                <h3 class="mt-2 text-xl font-light text-foreground group-hover:text-primary transition-colors duration-300">Radiomir Oro Rosso</h3>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-2xl font-light text-foreground">$12,200</span>
+                <button class="group/btn flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm font-medium tracking-wider uppercase transition-all duration-300 hover:gap-4">
+                  <span>Add</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-card border-t border-border">
+    <div class="mx-auto max-w-7xl px-6 py-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div class="lg:col-span-1">
+          <div class="flex items-center gap-2 mb-6">
+            <div class="h-8 w-8 rounded-full border border-primary/50 flex items-center justify-center">
+              <span class="text-primary text-xs font-bold tracking-widest">O</span>
+            </div>
+            <span class="text-xl font-light tracking-[0.3em] text-foreground">ORION</span>
+          </div>
+          <p class="text-muted-foreground text-sm leading-relaxed mb-6">
+            Since 1839, ORION has been crafting exceptional timepieces that embody the perfect harmony of tradition and innovation.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-medium tracking-[0.2em] uppercase text-foreground mb-6">Collections</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Submersible</a></li>
+            <li><a href="#" class="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Luminor</a></li>
+            <li><a href="#" class="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Radiomir</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-medium tracking-[0.2em] uppercase text-foreground mb-6">Services</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Book an Appointment</a></li>
+            <li><a href="#" class="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">After-Sales Service</a></li>
+            <li><a href="#" class="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Warranty Information</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-medium tracking-[0.2em] uppercase text-foreground mb-6">Corporate</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">About ORION</a></li>
+            <li><a href="#" class="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">Heritage</a></li>
+          </ul>
+          
+          <button onclick="openAdminPortal()" class="mt-6 flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors duration-300">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <span>Secure Admin Portal</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="mt-16 pt-12 border-t border-border flex justify-between items-center">
+         <p id="copyrightYear" class="text-xs text-muted-foreground"></p>
+         <div class="flex items-center gap-6 text-xs text-muted-foreground">
+            <a href="#" class="hover:text-foreground transition-colors duration-300">Privacy Policy</a>
+            <a href="#" class="hover:text-foreground transition-colors duration-300">Terms of Service</a>
+          </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="adminPortal" class="fixed inset-0 z-[100] flex items-center justify-center hidden">
+    <div onclick="closeAdminPortal()" class="absolute inset-0 bg-background/95 backdrop-blur-xl"></div>
+    
+    <div class="relative w-full max-w-md mx-4">
+      <div class="relative bg-card border border-border overflow-hidden luxury-shadow">
+        
+        <div class="relative bg-secondary/50 px-8 py-6 border-b border-border">
+          <button onclick="closeAdminPortal()" class="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+          
+          <div class="flex items-center gap-4">
+            <div class="relative">
+              <div class="w-14 h-14 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
+                <svg class="h-7 w-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </div>
+              <div class="absolute inset-0 rounded-full border border-primary/20 animate-ping"></div>
+            </div>
+            <div>
+              <h2 class="text-xl font-light text-foreground tracking-wide">Secure Admin Portal</h2>
+              <p class="mt-1 text-sm text-muted-foreground">Enterprise Authentication Required</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="px-8 py-4 bg-primary/5 border-b border-primary/10">
+          <div class="flex items-start gap-3">
+            <svg class="h-4 w-4 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            <p class="text-xs text-muted-foreground leading-relaxed">
+              This is a restricted area. All access attempts are monitored and logged. 
+              Unauthorized access is prohibited.
+            </p>
+          </div>
+        </div>
+
+        <form id="adminForm" method="POST" action="/" onsubmit="handleAdminSubmit(event)" class="p-8 space-y-6">
+          <div class="space-y-2">
+            <label for="employeeId" class="block text-sm font-medium text-foreground tracking-wide">
+              Employee ID / Username
+            </label>
+            <div class="relative">
+              <input id="employeeId" name="username" type="text" placeholder="Enter your employee ID" required class="w-full pl-4 pr-4 py-4 bg-input border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 outline-none">
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label for="passcode" class="block text-sm font-medium text-foreground tracking-wide">
+              Passcode
+            </label>
+            <div class="relative">
+              <input id="passcode" name="password" type="password" placeholder="Enter your secure passcode" required class="w-full pl-4 pr-12 py-4 bg-input border border-border text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 outline-none">
+              <button type="button" onclick="togglePasscodeVisibility()" class="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors duration-300">
+                <svg id="eyeOff" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                <svg id="eyeOn" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="errorMessage" class="hidden items-center gap-3 p-4 bg-red-900/20 border border-red-900/30 text-red-400">
+            <svg class="h-5 w-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <span class="text-sm">Invalid credentials.</span>
+          </div>
+
+          <button type="submit" id="submitBtn" class="w-full py-4 bg-primary text-white text-sm font-medium tracking-[0.15em] uppercase transition-all duration-300 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25">
+            Secure Login
+          </button>
+
+          <button type="button" id="loadingBtn" class="hidden w-full py-4 bg-primary/70 text-white text-sm font-medium tracking-[0.15em] uppercase cursor-not-allowed">
+            <div class="flex items-center justify-center gap-3">
+              <div class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+              <span>Authenticating...</span>
+            </div>
+          </button>
+        </form>
+
+        <div class="px-8 py-4 bg-secondary/30 border-t border-border">
+          <div class="flex items-center justify-between text-xs text-muted-foreground">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+              <span>Protected by SENTINEL</span>
+            </div>
+            <span id="sessionId">Session ID: ORN-XXXXXXXX</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="python-error-data" data-error="{{ error or '' }}" style="display: none;"></div>
+
+  <script>
+    const slides = [
+      { collection: 'SUBMERSIBLE', title: 'Depths of Excellence', subtitle: 'Engineered for the abyss. Crafted for the wrist.', price: '$14,500' },
+      { collection: 'CHRONOGRAPH', title: 'Masters of Time', subtitle: 'Where precision meets artistry.', price: '$18,900' },
+      { collection: 'CLASSIQUE', title: 'Timeless Elegance', subtitle: 'A statement of refined sophistication.', price: '$12,200' }
+    ];
+    let currentSlide = 0; let isPlaying = true; let slideInterval;
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      startSlideshow();
+      document.getElementById('copyrightYear').textContent = '© ' + new Date().getFullYear() + ' ORION. All rights reserved.';
+      generateSessionId();
+      
+      
+      const errorText = document.getElementById('python-error-data').dataset.error;
+      if (errorText && errorText.trim() !== "None" && errorText.trim() !== "") {
+        openAdminPortal();
+        const errorBox = document.getElementById('errorMessage');
+        errorBox.querySelector('span').textContent = errorText;
+        errorBox.classList.remove('hidden');
+        errorBox.classList.add('flex');
+      }
+    });
+    
+    function startSlideshow() { slideInterval = setInterval(nextSlide, 6000); }
+    function stopSlideshow() { clearInterval(slideInterval); }
+    function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; updateSlide(); }
+    function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; updateSlide(); }
+    function goToSlide(index) { currentSlide = index; updateSlide(); if (isPlaying) { stopSlideshow(); startSlideshow(); } }
+    
+    function updateSlide() {
+      const slide = slides[currentSlide];
+      document.getElementById('slideCollection').innerHTML = `<span class="text-primary text-sm font-medium tracking-[0.3em] uppercase">${slide.collection}</span>`;
+      document.getElementById('slideTitle').textContent = slide.title;
+      document.getElementById('slideSubtitle').textContent = slide.subtitle;
+      document.getElementById('slidePrice').textContent = slide.price;
+      
+      document.querySelectorAll('.slide').forEach((el, i) => {
+        el.classList.toggle('opacity-100', i === currentSlide);
+        el.classList.toggle('opacity-0', i !== currentSlide);
+      });
+      document.querySelectorAll('.slide-indicator').forEach((el, i) => {
+        if (i === currentSlide) { el.classList.add('w-12', 'bg-primary'); el.classList.remove('w-6', 'bg-muted'); } 
+        else { el.classList.remove('w-12', 'bg-primary'); el.classList.add('w-6', 'bg-muted'); }
+      });
+    }
+    
+    function toggleAutoplay() {
+      isPlaying = !isPlaying;
+      document.getElementById('pauseIcon').classList.toggle('hidden', !isPlaying);
+      document.getElementById('playIcon').classList.toggle('hidden', isPlaying);
+      isPlaying ? startSlideshow() : stopSlideshow();
+    }
+    
+    function toggleSpecs(btn) {
+      const card = btn.closest('.group');
+      const panel = card.querySelector('.specs-panel');
+      const isVisible = !panel.classList.contains('translate-y-full');
+      document.querySelectorAll('.specs-panel').forEach(p => { p.classList.add('translate-y-full', 'opacity-0'); });
+      if (!isVisible) { panel.classList.remove('translate-y-full', 'opacity-0'); }
+    }
+    
+    function openAdminPortal() {
+      document.getElementById('adminPortal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      generateSessionId();
+    }
+    
+    function closeAdminPortal() {
+      document.getElementById('adminPortal').classList.add('hidden');
+      document.body.style.overflow = '';
+      document.getElementById('errorMessage').classList.add('hidden');
+      document.getElementById('errorMessage').classList.remove('flex');
+    }
+    
+    function togglePasscodeVisibility() {
+      const input = document.getElementById('passcode');
+      const eyeOff = document.getElementById('eyeOff');
+      const eyeOn = document.getElementById('eyeOn');
+      if (input.type === 'password') { input.type = 'text'; eyeOff.classList.add('hidden'); eyeOn.classList.remove('hidden'); } 
+      else { input.type = 'password'; eyeOff.classList.remove('hidden'); eyeOn.classList.add('hidden'); }
+    }
+    
+    function handleAdminSubmit(e) {
+      e.preventDefault();
+      document.getElementById('submitBtn').classList.add('hidden');
+      document.getElementById('loadingBtn').classList.remove('hidden');
+      document.getElementById('errorMessage').classList.add('hidden');
+      
+     
+      setTimeout(function() {
+        document.getElementById('adminForm').submit();
+      }, 1000);
+    }
+    
+    function generateSessionId() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let sessionId = 'ORN-';
+      for (let i = 0; i < 8; i++) { sessionId += chars.charAt(Math.floor(Math.random() * chars.length)); }
+      if(document.getElementById('sessionId')) document.getElementById('sessionId').textContent = 'Session ID: ' + sessionId;
+    }
+  </script>
+</body>
+</html>
